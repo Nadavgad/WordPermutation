@@ -1,0 +1,15 @@
+class WordPermutation:
+
+    def is_permutation(self, string1, string2):
+        """
+        
+        :param string1: first string
+        :param string2: second string
+        :return: if string1 and string2 are permutation
+        """
+        return sorted(string1) == sorted(string2)
+
+
+word_permutation = WordPermutation()
+result = word_permutation.is_permutation("abc", "bca")
+print(result)
