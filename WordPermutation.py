@@ -4,7 +4,6 @@ def is_permutation(string1, string2):
     :param string2: second string
     :return: if string1 and string2 are permutation
     """
-
     if len(string1) != len(string2):
         return False
 
@@ -22,4 +21,4 @@ def is_permutation(string1, string2):
 
 # Test
 result = is_permutation("haawbsc", "bsaawch")
-print(F"Result ---> {result}")
+print(F"\nResult ---> {result}")
