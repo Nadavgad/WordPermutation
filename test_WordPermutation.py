@@ -33,6 +33,21 @@ class TestWordPermutation(unittest.TestCase):
         self.assertEqual(is_permutation("", "h"), False,
                          "Test case 7 failed: The strings should not be permutations")
 
+    def test_permutation_8(self):
+        self.assertEqual(is_permutation("AbCdEf", "aBcDeF"), False, "Test case failed: Case sensitivity")
+
+    def test_permutation_9(self):
+        self.assertEqual(is_permutation("hello world", "dlrow olleh"), True, "Test case failed: Whitespace")
+
+    def test_permutation_10(self):
+        self.assertEqual(is_permutation("!@#$%^", "%^$#@!"), True, "Test case failed: Special characters")
+
+    def test_permutation_11(self):
+        self.assertEqual(is_permutation("a" * 1000000, "a" * 1000000), True, "Test case failed: Long strings")
+
+    def test_permutation_12(self):
+        self.assertEqual(is_permutation("café", "éfac"), True, "Test case failed: Unicode characters")
+
 
 if __name__ == '__main__':
     unittest.main()
