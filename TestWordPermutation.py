@@ -1,52 +1,85 @@
 import unittest
-
 from WordPermutation import is_permutation
 
 
 class TestWordPermutation(unittest.TestCase):
 
-    def test_permutation_1(self):
+    def test_not_permutation_different_lengths(self):
+        """
+        Test for strings with different lengths which should not be considered permutations.
+        """
         self.assertEqual(is_permutation("haawbs", "bsaawch"), False,
-                         "Test case 1 failed: The strings should not be permutations")
+                         "Strings with different lengths should not be permutations")
 
-    def test_permutation_2(self):
+    def test_permutation_same_characters(self):
+        """
+        Test for strings with the same characters which should be considered permutations.
+        """
         self.assertEqual(is_permutation("haawbsc", "bsaawch"), True,
-                         "Test case 2 failed: The strings are not permutations")
+                         "Strings with the same characters should be permutations")
 
-    def test_permutation_3(self):
+    def test_permutation_empty_strings(self):
+        """
+        Test for empty strings which should be considered permutations.
+        """
         self.assertEqual(is_permutation("", ""), True,
-                         "Test case 3 failed: The strings are not permutations")
+                         "Empty strings should be considered permutations")
 
-    def test_permutation_4(self):
+    def test_permutation_reversed_strings(self):
+        """
+        Test for reversed strings which should be considered permutations.
+        """
         self.assertEqual(is_permutation("qwert", "trewq"), True,
-                         "Test case 4 failed: The strings are not permutations")
+                         "Reversed strings should be permutations")
 
-    def test_permutation_5(self):
+    def test_permutation_numeric_strings(self):
+        """
+        Test for numeric strings with the same digits which should be considered permutations.
+        """
         self.assertEqual(is_permutation("111555599999", "951999551591"), True,
-                         "Test case 5 failed: The strings are not permutations")
+                         "Numeric strings with same digits should be permutations")
 
-    def test_permutation_6(self):
+    def test_permutation_special_characters(self):
+        """
+        Test for strings with special characters which should be considered permutations.
+        """
         self.assertEqual(is_permutation("&&^%$^!*%", "^%&!$%^&*"), True,
-                         "Test case 6 failed: The strings are not permutations")
+                         "Strings with special characters should be permutations")
 
-    def test_permutation_7(self):
+    def test_not_permutation_empty_and_nonempty(self):
+        """
+        Test for an empty string and a non-empty string which should not be considered permutations.
+        """
         self.assertEqual(is_permutation("", "h"), False,
-                         "Test case 7 failed: The strings should not be permutations")
+                         "Empty string and non-empty string should not be permutations")
 
-    def test_permutation_8(self):
-        self.assertEqual(is_permutation("AbCdEf", "aBcDeF"), False, "Test case failed: Case sensitivity")
+    def test_not_permutation_case_sensitive(self):
+        """
+        Test for case-sensitive permutations which should not be considered permutations.
+        """
+        self.assertEqual(is_permutation("AbCdEf", "aBcDeF"), False,
+                         "Permutations should be case-sensitive")
 
-    def test_permutation_9(self):
-        self.assertEqual(is_permutation("hello world", "dlrow olleh"), True, "Test case failed: Whitespace")
+    def test_permutation_with_whitespace(self):
+        """
+        Test for strings with the same characters and different whitespace which should be permutations.
+        """
+        self.assertEqual(is_permutation("hello world", "dlrow olleh"), True,
+                         "Strings with same characters and different whitespace should be permutations")
 
-    def test_permutation_10(self):
-        self.assertEqual(is_permutation("!@#$%^", "%^$#@!"), True, "Test case failed: Special characters")
+    def test_permutation_long_strings(self):
+        """
+        Test for long strings with the same characters which should be permutations.
+        """
+        self.assertEqual(is_permutation("a" * 1000000, "a" * 1000000), True,
+                         "Long strings with same characters should be permutations")
 
-    def test_permutation_11(self):
-        self.assertEqual(is_permutation("a" * 1000000, "a" * 1000000), True, "Test case failed: Long strings")
-
-    def test_permutation_12(self):
-        self.assertEqual(is_permutation("café", "éfac"), True, "Test case failed: Unicode characters")
+    def test_permutation_with_unicode(self):
+        """
+        Test for strings with Unicode characters which should be permutations.
+        """
+        self.assertEqual(is_permutation("café", "éfac"), True,
+                         "Strings with Unicode characters should be permutations")
 
 
 if __name__ == '__main__':
